@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목록관련태그 : ul ol</title>
+</head>
+<body>
+    <h1> ul(unordered list): 순서 없는 목록 태그</h1>
+    <!-- 
+       순서가 없는 목록
+       글머리 
+         - disk : 기본값. 생략가능
+         - square : 네모난 모양
+         - circle : 원
+       블록레벨태그 : 라인 전체에 적용되는 태그 : ul,ol,li...
+       인라인레벨태그 : 라인의 일부만 적용 : b,small,...  
+    -->
+    <ul type="disk">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>jQuery</li>
+    </ul>
+    <ul type="square">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>jQuery</li>
+    </ul>
+    <ul type="circle">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>jQuery</li>
+    </ul>
+    <hr>
+    <h1> ol(ordered list): 순서 있는 목록 태그</h1>
+    <!--
+       ol : 순서가 있는 목록
+       글머리 종류
+       1 : 1,2,3 기본값, 생략 가능
+       A : A,B,C
+       a : a,b,c
+       I : I,II,III,...
+       i : i,ii,iii ...
+    -->
+    <ol><li>아침:밥</li><li>점심:국수</li><li>저녁:샐러드</li></ol>
+    <ol type="A"><li>아침:밥</li><li>점심:국수</li><li>저녁:샐러드</li></ol>
+    <ol type="a"><li>아침:밥</li><li>점심:국수</li><li>저녁:샐러드</li></ol>
+    <ol type="I"><li>아침:밥</li><li>점심:국수</li><li>저녁:샐러드</li></ol>
+    <ol type="i"><li>아침:밥</li><li>점심:국수</li><li>저녁:샐러드</li></ol>
+ <h1>개요목록 : dl</h1>
+  <!--
+    하나의 개요는 항목과 설명으로 구성됨
+     dl(description list) : 모든 개요의 목록 
+     dt(description term) : 하나의 개요를 구성하는 항목
+     dd(description description) : 하나의 개욜르 구성하는 설명
+   -->
+      <h3>일타스캔들</h3>
+      <dl>
+          <dt>편성</dt><dd>tvN 2025.10.14 ~</dd>
+          <dt>시청률</dt><dd>13.0% 닐슨코리아</dd>
+          <dt>소개</dt><dd>사교육 전쟁터에서 펼쳐지는 국가대표 반찬가게 열혈 사장과 ...</dd>
+      </dl>
+</body>
+</html>
