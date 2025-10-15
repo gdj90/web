@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red_text {    /* 태그 중 class="red_text" 인 모든 태그 */
+           color : #FF0000;            
+        }
+        .big_text {
+           font-size : 32px;
+        }
+    </style>
+    <!--
+      class 속성 : 하나 이상의 요소를 선택할 수 있음. 태그들
+         class="red_text big_text" : 한개의 태그가 2개 class 속성값을 가짐
+         class="red_text"    : 한개의 태그가 1개의 class 속성값을 가짐
+      
+      id 속성 : 하나의 태그는 한개의 id속성값만 가짐 
+
+      class 속성 선택자 : . 표현함
+
+      class 속성의 특징
+      1. 전역속성 : 모든 태그에 설정 가능함
+      2. 값은 값을 가진 class 속성은 같은 style로 처리 가능함
+      3. 하나의 태그에서 여러개의 class 속성값을 가질수 있음. 공백 구분함
+      4. style 에서 class 속성의 선택자는 . 임
+         .red_text : class="red_text"인 태그 선택
+    -->
+</head>
+<body>
+    <p class="red_text big_text">Hello World</p>
+    <p class="red_text">빨강색 문자</p>
+    <p>일반적인 p태그</p>
+    <h1 class="red_text">빨강색 H1</h1>
+</body>
+</html>

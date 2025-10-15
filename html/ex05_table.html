@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>테이블에 색상 주기</h1>
+    <table border="1"> <!-- 4행 2열 -->
+        <colgroup> <!-- 열의 서식 지정 -->
+           <col width="10%" style="background-color: aquamarine;"> <!--1열 설정-->
+           <col width="40%">                                         <!--2열 설정-->
+        </colgroup>
+        <thead>
+            <tr><th>No</th><th>이름</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>홍길동</td></tr>
+            <tr><td>2</td><td>김삿갓</td></tr>
+        </tbody>
+        <tfoot>
+            <tr><td>인원수</td><td>2명</td></tr>
+            </tfoot>
+    </table>
+    <hr>
+    <table border="1">
+      <caption>출장비용 보고서</caption> <!-- 테이블의 제목 -->
+      <colgroup>
+        <col>
+        <col>
+        <col style="background-color: lavenderblush;">
+      </colgroup>
+      <tr><th>대분류</th><th>중분류</th><th>금액</th></tr>
+            <tr><td>교통비</td><td>ktx</td><td>100000</td></tr>
+            <tr><td rowspan="2">식비</td><td>점심</td><td>20000</td></tr>
+            <tr><td>저녁</td><td>200000</td></tr>
+            <tr><td>숙박비</td><td>모텔</td><td>50000</td></tr>
+            <tr><td colspan="2">총합계</td><td>370000</td></tr>
+    </table>    
+</body></html>
