@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+        header, nav, section, article, aside, footer, div{
+            display:block;          border:1px solid red;           box-sizing:border-box;
+        }
+        .wrap{ /*하위 태그 : header, content-wrap, footer : 세로 배치*/
+            width:100%;
+            max-width:1300px; /*최대 가로길이 1300px*/
+            margin:auto;
+            display:flex;
+            flex-direction:column; /*아이템요소들의 가로길이는 부모요소 100%*/
+        }
+        .header                    {      height:200px;    display:flex;   flex-direction:column;        } /*header_top, header_nav 수직배치*/
+        .header_top                {      height:80%;      display:flex;  } /* header_logo(20%넓이), header_alarm(20%넓이), header_search(60%넓이) : 수평배치*/
+        .header_logo, .header_alarm{      width:20%;        }
+        .header_search             {      width:60%;        }
+        .header_nav                {      height:20%;       }
+        /*내용 부분*/
+        .content_wrap              {      min-height:500px;         display:flex;        } /*content_news, content_side가 하위 태그*/
+        .content_news              {      width:70%;}
+        .content_side              {      width:30%;    display:flex;    flex-direction:column;        } /*content_side_myinfo, content_side_ad  수직배치*/
+        .content_side_myinfo       {      height:150px;     }
+        .content_side_ad           {      height:350px;     }
+        /* 마지막 영역. */
+        .footer                    {      height:200px;      display:flex;        flex-direction:column;        }
+        .footer_link               {      height:20%;       }
+        .footer_info               {      height:80%;       }
+</style>
+</head>
+<body>
+    <!--
+       시맨틱 태그 : HTML5에서 제공하는 태그
+             - 구조를 표현 태그. 
+             - div 처럼 구조 잡는 용도 사용
+             - 영역내부에 어떤 정보들이 담겨있는지 파악하기 쉽게 의미있는 태그명으로 작성함
+               의미가 명확해짐. 타인이 해석을 쉽게 기능
+
+       header : 가장 위에 나타내는 머릿말
+       nav : 목차 형태의 메뉴바
+       section : 본문 내용
+       article : 본문 내용의 일부분. 분할되어 재사용이 가능한 내용
+       aside : 본문이외의 내용. 광고, 배너
+       footer : 바닥글(제작정보, 회사정보,....) 
+    -->
+       <div class="wrap">wrap
+        <header class="header">header
+            <div class="header_top">header_top
+                <div class="header_logo">header_logo</div>
+                <!-- 검색창 영역 따로 진행 -->
+                <div class="header_search">header_search</div>
+                <!-- ------------------- -->
+                <div class="header_alarm">header_alarm</div>
+            </div>
+            <!-- 메뉴바 영역 따로 진행 -->
+            <nav class="header_nav">header_nav</nav>
+            <!-- -------------------- -->
+        </header>
+        <section class="content_wrap">content_wrap
+            <div class="content_news">"content_news
+            </div>
+            <div class="content_side">content_side
+                <!-- 로그인 폼 영역 따로 진행 -->
+                <div class="content_side_myinfo">content_side_myinfo</div>
+                <!-- ---------------------- -->
+                <div class="content_side_ad">content_side_ad</div>
+            </div>
+        </section>
+        <!-- 푸터바 영역 따로 진행 -->
+        <footer class="footer">footer
+            <div class="footer_link">footer_link
+            </div>
+            <div class="footer_info">footer_info
+            </div>
+        </footer>
+        <!-- ------------------- -->
+    </div>
+</body>
+</html>

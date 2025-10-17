@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*@media : 화면의 크기별로 다른 css를 적용 가능함*/
+        @media(max-width:600px) {  /*최대 600px 까지 화면*/
+            body { background: red;}
+        }
+        @media((min-width:601px) and (max-width:999px)) { /*601 ~ 999 화면크기*/
+            body { background: green;}
+        }
+        @media(min-width:1000px) {
+            body { background: blue;}
+        }
+    </style>
+</head>
+<body>
+    <p>화면의 크기 별로 바탕색을 변경하기</p>
+</body>
+</html>
