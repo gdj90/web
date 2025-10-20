@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div>
+        <div>국어점수 <span id="kor">60</span>점</div>
+        <div>영어점수 <span id="eng">50</span>점</div>
+        <div>수학점수 <span id="math">50</span>점</div>
+    </div>
+    <div>
+        <div>평균점수 <span id="average"></span>점</div>
+        <div>학점 <span id="grade"></span>학점</div>
+        <div id="pass"></div>
+    </div>  
+    <script>
+        //document.querySelector("#kor") : id=kor인 태그.<span id="kor">81</span>
+        //textContent : #kor 객체의 하위 문자열
+        let kor = document.querySelector("#kor").textContent;  //"81"
+        let eng = document.querySelector("#eng").textContent;  //"93"
+        let math = document.querySelector("#math").textContent; //"100"
+        let average = (Number(kor)+Number(eng)+Number(math))/3; //평균
+        document.querySelector("#average").textContent = average; //<span id="average">평균값</span>
+        let grade;
+        /*  if 조건문
+           if(조건식) {
+              조건식의 결과가 참인 경우 실행되는 문장들
+           } else {
+              조건식의 결과가 거짓인 경우 실행되는 문장들
+           }
+        */
+        //평균이 60이상인 경우 #pass 학점취득 메세지를 출력하기
+        if (average >= 60) {
+           document.querySelector("#pass").textContent = "학점취득";
+        } else {
+           document.querySelector("#pass").textContent = "재수강요망";
+        }
+        /*
+           if(조건식1) {
+             조건식1의 결과가 참인 경우 실행되는 문장들
+           } else if(조건식2) {
+            조건식1은 거짓, 조건식2는 참인 경우 실행되는 문장들
+           }...
+
+        */
+        if(average >= 90) {    grade = 'A';     } 
+        else if (average >= 80) {    grade = 'B';  } 
+        else if (average >= 70) {    grade = 'C';  } 
+        else if (average >= 60) {    grade = 'D';  }
+        else {  grade = 'F';     }        
+        document.querySelector("#grade").textContent = grade
+    </script>
+    <p>두개의 수를 입력받아서 두수의 합이 짝수인 경우 짝수를 홀수인 경우 홀수 메세지를 #result에 출력하기</p>
+    <input type="text" id="num1"> + <input type="text" id="num2"> = <input type="text" id="add">
+    <button type="button" onclick="calc()">계산하기</button>
+    <div id="result"></div>
+    <script>
+        function calc() {
+          let num1 = document.getElementById("num1").value;
+          let num2 = document.querySelector("#num2").value;
+          let add = Number(num1) + Number(num2);
+          document.querySelector("#add").value = add;
+          if(add % 2 == 0) {
+            document.querySelector("#result").innerHTML = "<b>짝수입니다</b>"
+          } else {
+            document.querySelector("#result").innerHTML = "<b>홀수입니다</b>"
+          }
+        }
+        /*
+          이전버전
+          document.getElementById("아이디속성값") : id="아이디속성값" 태그 선택
+          document.getElementsByTagName("태그명") : <태그> 인 태그들 선택
+          document.getElementsByClassName("class속성값") : class="속성값" 인 태그들 선택
+          document.getElementsByName("name속성값") : name="속성값" 인 태그들 선택
+
+          ES6 이후
+          document.querySelector("선택자") : 태그 한개
+            선택자 : 태그
+                    .class속성값
+                    #id속성값
+          document.querySelectorAll("선택자") : 태그들
+        */
+    </script>
+
+</body>
+</html>
