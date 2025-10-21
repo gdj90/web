@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>switch 예제</title>
+</head>
+<body>
+	<h2>간이 계산기 만들기</h2>	
+	첫번째 값 : <input type="number" id="num1"><br>
+	두번째 값 : <input type="number" id="num2"><br>	
+	<input type="button" value="+" onclick="calculator(this.value);"> 
+	<input type="button" value="-" onclick="calculator(this.value);"> 
+	<input type="button" value="x" onclick="calculator(this.value);"> 
+	<input type="button" value="/" onclick="calculator(this.value);"> 
+	<input type="button" value="%" onclick="calculator(this.value);"> <br><br>
+   	 계산결과 : <span id="result"></span>    
+<script>
+    function calculator(val) {
+        const num1 = Number(document.getElementById("num1").value)
+        const num2 = Number(document.getElementById("num2").value)
+        let result = 0;
+        //자바형식의  switch  문장
+        switch(val) {
+            case "+" : result = num1 + num2;break;
+            case "-" : result = num1 - num2;break;
+            case "x" : result = num1 * num2;break;
+            case "/" : result = num1 / num2;break;
+            case "%" : result = num1 % num2;break;
+        }
+        document.getElementById("result").innerHTML = result;
+    }
+</script>
+   	
+
+</body>
+</html>

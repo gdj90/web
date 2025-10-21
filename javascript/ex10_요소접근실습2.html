@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        nums 폴더의 이미지 num0.jpg ~ num9.jpg 이미지를 화면에 출력하기
+        2행5열의 테이블 생성하여 각각의 셀에 이미지를 넣어 #box1에 출력하기
+    </p>
+    <div id="box1"></div>
+    <script>
+        let html = "<table>";
+        for(let n=0;n <= 9;n++) {
+            if(n%5==0) html += "<tr>";
+            html += "<td><img src='nums/num"+n+".jpg' width='100px'></td>"
+            if(n%5==4) html += "</tr>";
+        }    
+        html += "</table>"
+        document.querySelector("#box1").innerHTML = html;
+    </script>
+</body>
+</html>

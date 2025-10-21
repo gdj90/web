@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>국어점수 <span id="kor">80</span>점</div>
+        <div>영어점수 <span id="eng">70</span>점</div>
+        <div>수학점수 <span id="math">100</span>점</div>
+    </div>
+    <div>
+        <div>평균점수 <span id="average"></span>점</div>
+        <div>학점 <span id="grade"></span>학점</div>
+        <div id="pass"></div>
+    </div>  
+ <script>
+    let kor = document.querySelector("#kor").textContent;
+    let eng = document.querySelector("#eng").textContent;
+    let math = document.querySelector("#math").textContent;
+    let average = (Number(kor)+Number(eng)+Number(math))/3;
+    document.querySelector("#average").textContent = average;
+    let grade;
+    //break : switch 구문밖으로 제어 이동
+    //JavaScript 방식. 자바에서는 사용 불가
+    switch(true) {
+        case average >=90: grade="A";break;
+        case average >=80: grade="B";break;
+        case average >=70: grade="C";break;
+        case average >=60: grade="D";break;
+        default : grade="F";
+    }
+    document.querySelector("#grade").textContent = grade
+</script>        
+</body>
+</html>
