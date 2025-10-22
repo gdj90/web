@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .over50second { color : red; }
+    </style>
+</head>
+<body>
+    <p>
+        초가 50~59초는 시계 색상을 빨강색으로 변경하기
+    </p>
+    <h1 id="counter">
+        <span id="year"></span>년
+        <span id="month"></span>월
+        <span id="day"></span>일
+        <span id="hour"></span>시
+        <span id="minute"></span>분
+        <span id="second"></span>초 입니다.
+    </h1> 
+    <script>
+        setInterval(function(){
+            let now = new Date()
+            document.querySelector("#year").innerHTML = now.getFullYear();  //년도
+            document.querySelector("#month").innerHTML = now.getMonth() + 1;//getMonth() : 0~11월
+            document.querySelector("#day").innerHTML = now.getDate();  //일
+            document.querySelector("#hour").innerHTML = now.getHours();    //시간        
+            document.querySelector("#minute").innerHTML = now.getMinutes(); //분           
+            document.querySelector("#second").innerHTML = now.getSeconds(); //초
+            /*
+               className : class 속성값 등록
+               setAttribute(속성명,속성값) : 속성 등록
+               getAttribute(속성명) : 속성의 값을 조회
+               reAttribute(속성명) : 속성 제거
+            */
+            if(now.getSeconds() >= 50) {
+//                document.querySelector("#counter").className = 'over50second';
+                document.querySelector("#counter").setAttribute("class",'over50second'); //class 속성 등록
+            } else {
+//                document.querySelector("#counter").className = '';
+                document.querySelector("#counter").removeAttribute("class"); //class 속성 제거
+            }      
+        },1000)
+    </script>
+</body>
+</html>

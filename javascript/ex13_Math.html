@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area { width:500px; border:1px solid black; overflow: auto;}
+        .big { height: 500px;}
+        .small {height : 250px;}
+    </style>
+</head>
+<body>
+    <h3>Math : 숫자(수학)관련 메서드</h3>
+    <button onclick="mathTest()">수학관련메소드</button>
+    <div id="area1" class="area small"></div>
+    <script>
+        function mathTest(){
+            const divEL = document.getElementById("area1")
+            divEL.innerHTML = `절대값 : ${Math.abs(-123)}<br>`;
+            /*
+                  0 < Math.random() < 1.0 임의의 값 리턴
+            */
+            divEL.innerHTML += `임의의값 : ${Math.random()}<br>`;
+            //round(실수) : 반올림된 정수 리턴
+            divEL.innerHTML += `반올림 : ${Math.round(123.567)}<br>`;
+            divEL.innerHTML += `반올림위치지정(x) : ${Math.round(123.567,2)}<br>`;
+            //floor(실수) : 실수보다 작은거나 같은 근사정수 리턴
+            divEL.innerHTML += `버림 : ${Math.floor(123.567)}<br>`;
+            //ceil(실수) : 실수보다 큰거나 같은 근사정수 리턴
+            divEL.innerHTML += `올림 : ${Math.ceil(123.067)}<br>`;
+            divEL.innerHTML += `원주율 : ${Math.PI}<br>`;
+            //삼각함수 : 단위 라디안 단
+            divEL.innerHTML += `sin : ${Math.sin(Math.PI/2)}<br>`;
+            divEL.innerHTML += `cos : ${Math.cos(Math.PI/2)}<br>`;
+            divEL.innerHTML += `tan : ${Math.tan(Math.PI/4)}<br>`;
+        }
+    </script>
+ <hr>
+    <h3> 문자열과 숫자간의 산술연산 / 형변환</h3>
+    <button onclick="arithmetic();">산술연산</button>
+    <div id="area2" class="area small"></div>
+    <script>
+        function arithmetic() {
+            const divEL = document.getElementById("area2")
+            divEL.innerHTML += `test1 : ${7 + 7}<br>`; //14
+            divEL.innerHTML += `test2 : ${7 + 7 + "7"}<br>`;  //147
+            divEL.innerHTML += `test3 : ${"7" + 7}<br>`;  //77
+            divEL.innerHTML += `test4 : ${"7" + "7"}<br>`; //77
+            divEL.innerHTML += `test5 : ${"7" + 7 + 7}<br>`; //777
+            divEL.innerHTML += `test6 : ${"7" - 7}<br>`; 
+            divEL.innerHTML += `test7 : ${"7" / 7}<br>`;
+            divEL.innerHTML += `test8 : ${"7" * 7}<br>`;
+            /*
+               문자열과 숫자 사이에 연산은 덧셈 이외의 산술연산 가능
+                - 문자열이 숫자로 자동형변환 후 산술연산됨 
+                - 숫자들로만 이루어진 문자열만 가능함
+               덧셈연산 : 문자열 연결
+               왼쪽부터 우선순위로 연산됨. 단 *,/,%는 +,- 보다 우선순위는 높다
+            */
+            divEL.innerHTML += `test9 : ${7 + 7 + Number("7")}<br>`;  //21
+            divEL.innerHTML += `test10: ${7 + 7 + parseInt("7")}<br>`;  //21
+            divEL.innerHTML += `test11: ${7 + 7 + parseFloat("7")}<br>`;  //21
+            divEL.innerHTML += `test12: ${7 + "1,234원"}<br>`;  //
+            divEL.innerHTML += `test13: ${7 + Number("1,234원")}<br>`;  // NaN : 숫자가 아님
+            divEL.innerHTML += `test14: ${7 + parseInt("1.234원")}<br>`;  //8
+            divEL.innerHTML += `test15: ${7 + parseFloat("1.234원")}<br>`;  //8.234
+            // eval 함수 : 사용하지 않는것을 권장함
+            //             문자열을 수식으로 인식하여 결과를 리턴
+            let str = "100 + 20 * 3"; //160
+            divEL.innerHTML += `test16:${eval(str)}<br>`
+        }
+    </script>
+</body>
+</html>

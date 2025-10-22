@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .area {background-color: lightgray; border:1px solid black; width: 500px; height: 100px;
+             overflow: auto;}
+    </style>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <h3>기본이벤트</h3>
+    <p>
+        특정 요소 객체의 이벤트 속성에 접근 후 이벤트 핸들러 연결 방식
+    </p>
+    <button id="btn1">실행 확인1</button>
+    <button id="btn2">실행 확인2</button>
+    <div id="area1" class="area"></div>
+    <script>
+        const area1 = document.querySelector("#area1");
+        document.querySelector("#btn1").onclick = function(){
+            area1.innerHTML += "btn1 버튼이 클릭되었습니다.<br>"
+        }
+        document.querySelector("#btn2").onclick = function(){
+            area1.innerHTML += "btn2 버튼이 클릭되어 btn1의 이벤트 제거합니다.<br>"
+            document.querySelector("#btn1").onclick = null;
+        }
+    </script>
+    <h3>인라인 방식</h3>
+    <p>
+        요소 내부에 직접 이벤트 속성을 정의. 
+    </p>
+    <button onclick="document.querySelector('#area2').innerHTML +='첫번째 버튼 클릭<br>'">실행확인1</button>
+    <button onclick="test1()">실행확인2</button>
+    <div id="area2" class="area"></div>
+    <script>
+        function test1() {
+            document.querySelector("#area2").innerHTML += "두번째 버튼 클릭<br>"
+        }
+    </script>
+    <h3>표준 이벤트 모델(addEventListener) </h3>
+    <p>w3c에서 공식적으로 지정한 이벤트 모델</p>
+    <button id="btn3">실행확인</button>
+    <script>
+        const btn3 = document.querySelector("#btn3");
+        btn3.addEventListener('click',function(){
+            alert("표준 이벤트 모델 테스트")
+        })
+        btn3.addEventListener("mouseenter",function(){
+            btn3.style.backgroundColor = "red";
+        })
+        btn3.addEventListener("mouseout",function(){
+            btn3.style.backgroundColor = null;
+        })
+    </script>
+    <h2>이벤트가 발생한 요소에 접근하는 방법</h2>
+    <button id="btn4" class="btn">기본 이벤트 방식</button>
+    <button id="btn5" class="btn">표준 이벤트 방식</button>
+    <button onclick="test2()">인라인 이벤트 방식1</button>
+    <button onclick="test3(this)">인라인 이벤트 방식2</button>
+    <button onclick="test3(this)">인라인 이벤트 방식3</button>
+    <script>
+        /*
+           window.event.target : 3가지 방식 전부 이벤트 발생 요소 의미
+           this : 기본,표준이벤트 방식=> 이벤트발생요소
+                  인라인방식         => window 객체
+           e 매개변수(기본,표준이벤트방식) : e.target => 이벤발생요수       
+        */
+        function test2(){
+            console.log("window.event.target:",window.event.target);
+            window.event.target.innerHTML = "버튼변경"
+            console.log("this:",this) //window 객체
+        }
+        function test3(btn){
+            //btn : 이벤트소스
+            btn.innerHTML = "버튼변경2";
+            btn.style.backgroundColor = "blue"
+        }
+        document.querySelector("#btn4").onclick=function(e){
+            //e : 이벤트객체, 이벤트 정보를 저장하고 있는 객체
+            console.log(e)
+            console.log("e.target:",e.target) //이벤트 발생된 객체. 이벤트소스
+            console.log("window.event:",window.event)
+            console.log("window.event.target:",window.event.target)
+            console.log("this:",this) //이벤트 발생된 객체. 이벤트소스
+            e.target.innerHTML = "버튼이클릭됨"
+            window.event.target.style.backgroundColor = "red"
+            this.style.color="white"
+        }
+        document.querySelector("#btn5").addEventListener("click",function(e){
+            console.log("e.target:",e.target) //이벤트 발생된 객체. 이벤트소스
+            console.log("window.event.target:",window.event.target)
+            console.log("this:",this) //이벤트 발생된 객체. 이벤트소스
+        })
+    </script>
+</body>
+</html>
