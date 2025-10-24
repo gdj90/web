@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+          비동기 처리 방식
+          1. 데이터를 주고 받는 통신(송신, 수신) 과정이 순서 없이 처리되는 방식
+          2. 응답이 없어도 계속 요청이 가능함
+          3. 페이지를 구성하는 일부 데이터만 요청하고 응답을 받을 수 있다
+          4. JavaScript의 XMLHttpRequest 객체를 이용
+        */
+    </script>
+    <input type="button" id="btn1" value="텍스트요청">
+    <div id="area1"></div>
+    <script>
+        document.getElementById("btn1").addEventListener('click',()=>{
+            //1. XMLHTTPRequest 객체 생성 : 서버와 비동기통신이 가능한 객체
+            let xhr = new XMLHttpRequest();
+            /*2. 
+              open : 요청 정보 설정
+              - get : HTTP Method (get/POST)
+              - data.txt : url. http://127.0.0.1:5500/javascript/data.txt
+              - true : 비동기 통신
+            */
+            xhr.open('get','data.txt',true);
+            // 전송하기 - 서버로 요청함
+            xhr.send();
+            /*
+            readystatechange : xhr 객체의 상태가 변경될때 발생되는 이벤트
+                xhr.readyState : xhr 객체의 상태 정보
+                  - 0 : 객체 생성
+                  - 1 : open
+                  - 2 : send. 응답이 없는 경우
+                  - 3 : 응답이 오는 중
+                  - 4 : 응답완료
+                xhr.status
+                  - 200 : 정상완료
+                  - 4xx : 요청실패
+                  - 5XX : 응답실패
+            */
+            xhr.addEventListener('readystatechange',()=>{
+                if(xhr.readyState == 4 && xhr.status == 200) { // 정상처리 완료응답 경우
+                    //xhr.responseText : 응답메세지 저장
+                    document.getElementById("area1").textContent = xhr.responseText
+                }
+            })
+        })
+    </script>
+    <input type="button" id="btn2" value="제품정보요청1">
+    <div id="area2"></div>
+    <script>
+        document.getElementById("btn2").addEventListener('click',()=>{
+            var xhr = new XMLHttpRequest();
+            xhr.open('get','product1.xml',true);
+            xhr.send()
+            xhr.addEventListener('readystatechange',()=>{
+             if(xhr.readyState == 4 && xhr.status == 200) {
+                let data = xhr.responseXML;
+                let productList = data.getElementsByTagName("product")
+                let str = '<table border="1">';
+                str += '<thead><tr><td>모델</td><td>제조사</td><td>가격</td></tr></thead>';
+                str += '<tbody>';
+                for(let i = 0; i < productList.length; i++){
+                  str += '<tr>';
+                  str += '<td>' + productList[i].getElementsByTagName('model')[0].textContent + '</td>';
+                  str += '<td>' + productList[i].getElementsByTagName('maker')[0].textContent + '</td>';
+                  str += '<td>' + productList[i].getElementsByTagName('price')[0].textContent + '</td>';
+                  str += '</tr>';
+                }
+                str += '</tbody></table>';
+                document.getElementById('area2').innerHTML = str;
+                }
+            })
+        })
+    </script>
+    <input type="button" id="btn3" value="제품정보요청2">
+    <div id="area3"></div>
+<script>
+    document.getElementById("btn3").addEventListener('click',()=>{
+      var xhr = new XMLHttpRequest();
+      xhr.open('get','product2.xml',true);
+      xhr.send()
+      xhr.addEventListener('readystatechange',()=>{
+      let data = xhr.responseXML; //서버의 xml 형식 응답을 DOM 객체로 생성 후 루트노드(문서노드) 리턴
+      let productList = data.getElementsByTagName("product")        
+      let str = "<div>"
+      for(let i=0;i < productList.length;i++) {
+        str += "<ul>"
+        str += "<li>" + productList[i].getAttribute("model") + "</li>";    
+        str += "<li>" + productList[i].getAttribute("maker") + "</li>";
+        str += "<li>" + productList[i].getAttribute("price") + "</li>";        
+        str += "</ul>"
+      }  
+      str += "</div>"  
+      document.getElementById("area3").innerHTML = str;
+      });
+    });  
+</script>
+    <style>
+       .product {
+            border:1px solid gray;
+        }
+</style>
+    <input type="button" id="btn4" value="제품정보요청3">
+    <div id="area4"></div>
+    <script>
+        //[{"maker":"삼성","price":100,"model":"세탁기"},...]
+        document.getElementById("btn4").addEventListener('click',()=>{
+            var xhr = new XMLHttpRequest();
+            xhr.open('get','product.json',true);
+            xhr.send()
+            xhr.addEventListener("readystatechange",()=>{
+              if(xhr.readyState == 4 && xhr.status == 200) {
+                //xhr.responseText : 서버응답을 문자열로 리턴
+                //JSON.parse(문자열) : 문자열 => JavaScript의 객체로 변경
+                let data = JSON.parse(xhr.responseText);
+                console.log(data);
+                let str = "";
+                for(let i=0;i < data.length;i++) {
+                    str += '<div class="product">';
+                    str += "<span>" + data[i].model + "</span>,"
+                    str += "<span>" + data[i].maker + "</span>,"
+                    str += "<span>" + data[i].price + "</span>"
+                    str += "</div>"
+                }
+                document.getElementById("area4").innerHTML = str;
+              }
+            })
+        })
+    </script>
+</body>
+</html>

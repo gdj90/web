@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- weather.xml 데이터를 읽어 화면에 표시하기-->
+     <button id="btn">날씨조회하기</button>
+     <table border="1"><caption id="title"></caption>
+        <tr><th>지역명</th><th>날씨</th><th>온도</th></tr>
+        <tbody id="weather_body"></tbody>
+     </table>
+     <script>
+        document.getElementById("btn").addEventListener("click",()=>{
+            let xhr = new XMLHttpRequest();
+            xhr.open('get','weather.xml',true);
+            xhr.send();
+            xhr.addEventListener("readystatechange", ()=>{
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    let data = xhr.responseXML;
+                    //<local..... >....
+                    let locallist = data.getElementsByTagName("local");
+                    let str = "";
+                    for(let i = 0;i<locallist.length;i++) {
+                        str += "<tr>";
+                        str += "<td>" + locallist[i].textContent + "</td>";    
+                        str += "<td>" + locallist[i].getAttribute("desc") + "</td>";    
+                        str += "<td>" + locallist[i].getAttribute("ta") + "</td>";    
+                        str += "</tr>";
+                    }
+                    document.getElementById("weather_body").innerHTML = str;
+                    let title = "";
+                    title += data.getElementsByTagName("weather")[0].getAttribute("year") + "년";
+                    title += data.getElementsByTagName("weather")[0].getAttribute("month") + "월";
+                    title += data.getElementsByTagName("weather")[0].getAttribute("day") + "일";
+                    title += data.getElementsByTagName("weather")[0].getAttribute("hour") + "시";
+                    document.getElementById("title").innerHTML=title;
+
+                }
+            })
+        })
+     </script>
+</body>
+</html>
