@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn_open" value="창열기"> 
+    <input type="button" id="btn_close" value="창닫기"> 
+    <div id="area1"></div>
+    <script>
+        let nwin;  //전역변수
+        document.getElementById("btn_open").addEventListener("click",()=>{
+            let width = 480;
+            let height = 360;
+            console.log("화면너비:",screen.width);
+            console.log("화면높이:",screen.height);
+            console.log("실제너비:",screen.availWidth);
+            console.log("실제높이:",screen.availHeight);           
+            let left = (screen.width - width) / 2;
+            let top = (screen.height - height) / 2;
+            //
+            let feature = `width=${width},height=${height},left=${left},top=${top}` ;
+/* 
+   새로운 창 띄우기
+   window.open(새창의url, 이름, 옵션 )
+     width,height : 새창 크기
+     left,top : 위치. 0,0
+*/
+// nwin : 새창의 window 객체.
+            nwin = window.open("ex30_popup2.html",'',feature);
+//            nwin = window.open("ex30_popup2.html",'','');
+        })
+        document.getElementById("btn_close").addEventListener("click",()=>{
+            document.getElementById("area1").innerHTML = "새창 닫기"
+            nwin.close()
+        })
+    </script>
+</body>
+</html>

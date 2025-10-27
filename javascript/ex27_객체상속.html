@@ -14,14 +14,14 @@
         function Dog(name) {
             this.base = Animal; //부모클래스 설정
             this.base(name) //부모클래스 생성자. 부모클래스 객체
-            this.cry = function(){
+            this.cry = function(){ //오버라이딩. 함수의 재정의
                 document.write(this.name + ":멍멍<br>")
             }
         }
         function Cat(name) {
             this.base = Animal;
             this.base(name) //부모클래스 생성자
-            this.cry = function(){
+            this.cry = function(){ //오버라이딩. 함수의 재정의
                 document.write(this.name + ":야옹<br>")
             }
         }
