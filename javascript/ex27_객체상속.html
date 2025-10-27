@@ -12,8 +12,8 @@
             this.cry = function(){}
         }
         function Dog(name) {
-            this.base = Animal;
-            this.base(name) //부모클래스 생성자
+            this.base = Animal; //부모클래스 설정
+            this.base(name) //부모클래스 생성자. 부모클래스 객체
             this.cry = function(){
                 document.write(this.name + ":멍멍<br>")
             }

@@ -1,0 +1,42 @@
+<script type="text/javascript">
+   function CheckWeight(name,height,weight) {
+	   this.username = name
+	   this.userheight = height
+	   this.userweight = weight
+	   //(키-100)*0.9 -5 ~ (키-100)*0.9 + 5 
+	   this.minWeight
+	   this.maxWeight
+	   //함수 정의
+	   this.getResult = function () {
+		   //정상범위 : 정상몸무게 리턴
+		   //minWeight > 몸무게 : 저체중입니다.
+		   //maxWeight < 몸무게 : 과체중입니다.	 
+		   this.minWeight = (this.userheight - 100) * 0.9 - 5; //저체중한계
+		   this.maxWeight = (this.userheight - 100) * 0.9 + 5; //과체중한계
+		   if(this.userweight >= this.minWeight &&
+			   this.userweight <= this.maxWeight )
+			   return this.username + ":정상 체중 입니다.=> " + this.minWeight + "~" + this.maxWeight;
+		   else if(this.userweight < this.minWeight) 
+			   return this.username + ":저체중 입니다.=> " + this.minWeight + "~" + this.maxWeight;
+		   else if(this.userweight > this.maxWeight)
+			   return this.username + ":과체중 입니다..=> " + this.minWeight + "~" + this.maxWeight;
+	   }   
+   }
+ /*
+    정상체중인지 과체중 인지 판단하기 
+
+      정상범위 : 정상몸무게
+	  저체중한계 > 몸무게 : 저체중입니다.
+	  과체중한계 < 몸무게 : 과체중입니다.	 
+	  저체중한계 = (this.userheight - 100) * 0.9 - 5;
+	  과체중한계 = (this.userheight - 100) * 0.9 + 5;      
+   */ 
+   let jang = new CheckWeight("장보리",168,62)
+   let park = new CheckWeight("박달재",180,83)
+   //document.write(jang+"<br>")
+   //document.write(park+"<br>")
+   document.write(jang.getResult()+"<br>")
+   document.write(park.getResult()+"<br>")
+   console.log(jang)
+   console.log(park)
+</script>
